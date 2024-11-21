@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: backend
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yml
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+server:
+  servlet:
+    context-path: /api/v1
+app:
+  jwt:
+    secret: 3ZbN0C2xVh2x7O1YsZ3qLwKX48eAG6E1+H6QiKlf3LJq4H3YfZIuqpeIDtTsVzT4jk=
+    expiration: 86400000
+    header: Authorization
+    prefix: "Bearer "
