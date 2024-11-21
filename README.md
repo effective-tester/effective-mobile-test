@@ -69,7 +69,7 @@ docker-compose up --build
 http://localhost:${HOST_PORT}/api/v1/swagger-ui/index.html
 ```
 
-Либо воспользуйтесь любыми средствами визуализация `openapi.yml` файла (например, с помощью `IntelliJ IDEA`), который имеет путь:
+либо воспользуйтесь любыми средствами визуализация `openapi.yml` файла (например, с помощью `IntelliJ IDEA`), который имеет путь:
 ```
 backend\src\main\resources\static\openapi.yml
 ```
