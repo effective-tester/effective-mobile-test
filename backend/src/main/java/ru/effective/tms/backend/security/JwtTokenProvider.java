@@ -49,7 +49,7 @@ public class JwtTokenProvider {
     public boolean validateToken(String authToken) {
         try {
             Jwts.parserBuilder()
-                    .setSigningKey(key) // Устанавливаем ключ
+                    .setSigningKey(key)
                     .build()
                     .parseClaimsJws(authToken);
             return true;
