@@ -1,11 +1,13 @@
 package ru.effective.tms.backend.dto.param;
 
 import jakarta.validation.constraints.Pattern;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.UUID;
 
-@Data
+@Setter
+@Getter
 public class TaskQueryParams {
 
     private UUID authorId;

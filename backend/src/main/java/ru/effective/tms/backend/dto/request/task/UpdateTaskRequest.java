@@ -2,15 +2,17 @@ package ru.effective.tms.backend.dto.request.task;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import ru.effective.tms.backend.enum_.task.TaskPriority;
 import ru.effective.tms.backend.enum_.task.TaskStatus;
 
 import java.util.UUID;
 
-@Data
+@Setter
+@Getter
 @EqualsAndHashCode(callSuper = true)
 @Builder
 @NoArgsConstructor

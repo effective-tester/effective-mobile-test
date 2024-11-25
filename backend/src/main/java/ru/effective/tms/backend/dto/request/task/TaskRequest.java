@@ -1,14 +1,16 @@
 package ru.effective.tms.backend.dto.request.task;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import ru.effective.tms.backend.enum_.task.TaskPriority;
 import ru.effective.tms.backend.enum_.task.TaskStatus;
 
 import java.util.UUID;
 
-@Data
+@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public abstract class TaskRequest {

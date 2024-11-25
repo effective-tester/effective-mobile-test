@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.effective.tms.backend.annotation.log.LogExecution;
+import ru.effective.tms.backend.annotation.security.IsAdminOrUserAssignee;
 import ru.effective.tms.backend.dto.request.comment.CreateCommentRequest;
 import ru.effective.tms.backend.dto.response.CommentDto;
 import ru.effective.tms.backend.exception.task.TaskNotFoundException;
@@ -31,6 +32,7 @@ public class CommentService {
 
     @Transactional
     @LogExecution
+    @IsAdminOrUserAssignee
     public CommentDto addComment(UUID taskId, CreateCommentRequest request) {
         Task task = taskRepository.findById(taskId)
                 .orElseThrow(() -> new TaskNotFoundException(taskId));

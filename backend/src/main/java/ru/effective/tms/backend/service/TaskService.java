@@ -6,6 +6,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.effective.tms.backend.annotation.log.LogExecution;
+import ru.effective.tms.backend.annotation.security.IsAdmin;
+import ru.effective.tms.backend.annotation.security.IsAdminOrUser;
+import ru.effective.tms.backend.annotation.security.IsAdminOrUserAssignee;
 import ru.effective.tms.backend.dto.param.TaskQueryParams;
 import ru.effective.tms.backend.dto.request.task.CreateTaskRequest;
 import ru.effective.tms.backend.dto.request.task.TaskRequest;
@@ -39,6 +42,7 @@ public class TaskService {
 
     @Transactional
     @LogExecution
+    @IsAdmin
     public TaskDto createTask(CreateTaskRequest request) {
         Task task = taskMapper.toModel(request);
         setAuthorAndAssignee(task, request);
@@ -48,6 +52,7 @@ public class TaskService {
 
     @Transactional
     @LogExecution
+    @IsAdminOrUserAssignee
     public TaskDto getTask(UUID id) {
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new TaskNotFoundException(id));
@@ -56,6 +61,7 @@ public class TaskService {
 
     @Transactional
     @LogExecution
+    @IsAdminOrUserAssignee
     public TaskDto updateTask(UUID id, UpdateTaskRequest request) {
         User user = userUtil.getCurrentUser();
         Task task = taskRepository.findById(id)
@@ -68,6 +74,7 @@ public class TaskService {
 
     @Transactional
     @LogExecution
+    @IsAdmin
     public void deleteTask(UUID id) {
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new TaskNotFoundException(id));
@@ -76,6 +83,7 @@ public class TaskService {
 
     @Transactional(readOnly = true)
     @LogExecution
+    @IsAdminOrUser
     public Page<TaskDto> getAllTasks(TaskQueryParams params) {
         User user = userUtil.getCurrentUser();
         TaskFilter filter = paramsMapper.toFilter(params);

@@ -5,6 +5,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.effective.tms.backend.annotation.log.LogExecution;
+import ru.effective.tms.backend.annotation.security.IsAdminOrUser;
 import ru.effective.tms.backend.dto.response.UserDto;
 import ru.effective.tms.backend.exception.task.UserNotFoundException;
 import ru.effective.tms.backend.mapper.UserMapper;
@@ -21,6 +22,7 @@ public class AccountService {
 
     @Transactional
     @LogExecution
+    @IsAdminOrUser
     public UserDto me(Authentication authentication) {
         String email = authentication.getName();
         User user = userRepository.findByEmail(email)

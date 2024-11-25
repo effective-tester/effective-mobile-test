@@ -1,4 +1,4 @@
-package ru.effective.tms.backend.security;
+package ru.effective.tms.backend.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +14,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import ru.effective.tms.backend.security.JwtAuthenticationEntryPoint;
+import ru.effective.tms.backend.security.JwtAuthenticationFilter;
 
 import java.util.List;
 
